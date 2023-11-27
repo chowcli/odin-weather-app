@@ -13,6 +13,16 @@ module.exports = merge(common, {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
+    new HtmlWebpackPlugin({
+      title: "Weather App",
+      filename: "index.html",
+      template: "./src/index.html",
+      minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        removeComments: true,
+      },
+    }),
   ],
 
   module: {
@@ -27,18 +37,9 @@ module.exports = merge(common, {
   optimization: {
     minimizer: [
       // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+      // eslint-disable-next-line quotes
       `...`,
       new CssMinimizerPlugin(),
-      new HtmlWebpackPlugin({
-        title: "Weather App",
-        filename: "index.html",
-        template: "./src/index.html",
-        minify: {
-          removeAttributeQuotes: true,
-          collapseWhitespace: true,
-          removeComments: true,
-        },
-      }),
     ],
   },
 });
