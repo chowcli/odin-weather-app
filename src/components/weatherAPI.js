@@ -25,15 +25,15 @@ function processData(rawData) {
     },
 
     current: {
-      temp_celsius: Math.round(rawData.current.temp_c),
-      temp_fahrenheit: Math.round(rawData.current.temp_f),
-      is_day: rawData.current.is_day,
+      tempCelsius: Math.round(rawData.current.temp_c),
+      tempFahrenheit: Math.round(rawData.current.temp_f),
+      isDay: rawData.current.is_day,
       condition: rawData.current.condition.text,
-      wind_kph: rawData.current.wind_kph,
+      windKph: rawData.current.wind_kph,
       humid: rawData.current.humidity,
       cloud: rawData.current.cloud,
-      feelsLike_c: Math.round(rawData.current.feelslike_c),
-      feelsLike_f: Math.round(rawData.current.feelslike_f),
+      feelsLikeC: Math.round(rawData.current.feelslike_c),
+      feelsLikeF: Math.round(rawData.current.feelslike_f),
     },
   };
 
