@@ -27,6 +27,15 @@ function toggleIcon(isDay) {
   }
 }
 
+function dayOrNight(isDay) {
+  const cycleElm = document.querySelector("span.cycle");
+  if (isDay === 1) {
+    cycleElm.textContent = "Day";
+  } else {
+    cycleElm.textContent = "Night";
+  }
+}
+
 function upperWeatherInfoDOM(weatherData) {
   // location DOM
   const locationElm = document.querySelector("h3.location");
@@ -48,6 +57,7 @@ function upperWeatherInfoDOM(weatherData) {
   // condition DOM
   const conditionElm = document.querySelector("h4.condition");
   conditionElm.textContent = weatherData.current.condition;
+  dayOrNight(weatherData.current.isDay);
   toggleIcon(weatherData.current.isDay);
 }
 
@@ -110,6 +120,7 @@ function clearWeatherInfoDOM() {
   const timeElm = document.querySelector("p.time");
   const temperatureElm = document.querySelector("p.temperature");
   const conditionElm = document.querySelector("h4.condition");
+  const cycleElm = document.querySelector("span.cycle");
   const belowContainer = document.querySelector(".below-container");
 
   const sunIcon = document.querySelector("i.iconoir-sun-light");
@@ -120,6 +131,7 @@ function clearWeatherInfoDOM() {
   timeElm.textContent = "";
   temperatureElm.textContent = "";
   conditionElm.textContent = "";
+  cycleElm.textContent = "";
   belowContainer.innerHTML = "";
 
   sunIcon.classList.remove("active");
