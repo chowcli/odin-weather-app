@@ -1,5 +1,4 @@
 import "./styles/main.css";
-import { searchLocationHandler, defaultPage } from "./components/displayData";
+import searchLocationHandler from "./components/displayData";
 
-defaultPage();
-searchLocationHandler();
+document.addEventListener("DOMContentLoaded", searchLocationHandler);
