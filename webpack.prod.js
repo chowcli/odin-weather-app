@@ -1,8 +1,9 @@
 const { merge } = require("webpack-merge");
-const common = require("./webpack.common.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const common = require("./webpack.common");
 
 module.exports = merge(common, {
   mode: "production",
@@ -40,6 +41,15 @@ module.exports = merge(common, {
       // eslint-disable-next-line quotes
       `...`,
       new CssMinimizerPlugin(),
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            // Lossless optimization with custom option
+            plugins: [["jpegtran", { progressive: true }]],
+          },
+        },
+      }),
     ],
   },
 });
